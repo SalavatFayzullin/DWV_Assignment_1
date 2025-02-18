@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Grossing Movies</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Top Grossing Movies</h1>
+    Sort by:
+    <select onchange="sortByChanged(this)">
+        <option>Revenue</option>
+        <option>Release Year</option>
+    </select>
+    Sorting order:
+    <select onchange="sortOrderChanged(this)">
+        <option>Ascending</option>
+        <option>Descending</option>
+    </select>
+    <table id="movies-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Revenue</th>
+                <th>Release Year</th>
+                <th>Director</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically inserted here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
