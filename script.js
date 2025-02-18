@@ -1,6 +1,5 @@
 // script.js
-const moviesData = fetch('https://raw.githubusercontent.com/SalavatFayzullin/DWV_Assignment_1/refs/heads/master/data.json').
-
+let moviesData = []
 let sortingOrder = 'Ascending', sortingColumn = 'Revenue';
 
 function handleSorting() {
@@ -41,16 +40,21 @@ function populateTable() {
         const row = document.createElement('tr');
 
         row.innerHTML = `
-            <td>${movie.title}</td>
-            <td>${movie.revenue}</td>
-            <td>${movie.release_year}</td>
-            <td>${movie.director}</td>
-            <td>${movie.country}</td>
-        `;
+                <td>${movie.title}</td>
+                <td>${movie.revenue}</td>
+                <td>${movie.release_year}</td>
+                <td>${movie.director}</td>
+                <td>${movie.country}</td>
+            `;
 
         tableBody.appendChild(row);
     });
 }
 
-// Call the function to populate the table when the page loads
-window.onload = populateTable;
+
+fetch('https://raw.githubusercontent.com/SalavatFayzullin/DWV_Assignment_1/refs/heads/master/data.json')
+    .then(resp => resp.json(), rej => console.log(rej))
+    .then(resp => {
+        moviesData = resp
+        populateTable()
+    }, rej => console.log(rej))
